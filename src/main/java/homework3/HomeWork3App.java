@@ -1,6 +1,5 @@
 package homework3;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.util.Arrays;
 
 public class HomeWork3App {
