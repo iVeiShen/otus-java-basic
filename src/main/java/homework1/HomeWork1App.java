@@ -2,7 +2,7 @@ package homework1;
 
 import java.util.Scanner;
 
-public class MainApp {
+public class HomeWork1App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите номер метода (от 1 до 5):");
