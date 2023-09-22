@@ -10,9 +10,9 @@ public class HomeWork4App {
         for (int i = 0; i < users.length; i++) {
             users[i] = new User(firstNames[(int) (Math.random() * 5)], middleNames[(int) (Math.random() * 5)], lastNames[(int) (Math.random() * 5)], 2005 - (int) (Math.random() * 50), "user" + i + " @gmail.com");
         }
-        for (int i = 0; i < users.length; i++) {
-            if ((2023 - users[i].getBirthYear()) > 40) {
-                users[i].info();
+        for (User user : users) {
+            if ((2023 - user.getBirthYear()) > 40) {
+                user.info();
             }
         }
 

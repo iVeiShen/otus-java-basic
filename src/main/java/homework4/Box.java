@@ -1,10 +1,10 @@
 package homework4;
 
 public class Box {
-    private int size;
+    private final int size;
     private String color;
     private String item;
-    private int isOpen;
+    private boolean isOpen;
 
     public Box(int size, String color) {
         this.size = size;
@@ -12,19 +12,19 @@ public class Box {
     }
 
     public void open() {
-        if (isOpen == 1) {
+        if (isOpen) {
             System.out.println("Коробка уже открыта!!!");
         } else {
-            isOpen = 1;
+            isOpen = true;
             System.out.println("Коробка открыта");
         }
     }
 
     public void close() {
-        if (isOpen == 0) {
+        if (!isOpen) {
             System.out.println("Коробка уже закрыта!!!");
         } else {
-            isOpen = 0;
+            isOpen = false;
             System.out.println("Коробка закрыта");
         }
     }
@@ -32,7 +32,7 @@ public class Box {
     public void putItem(String item) {
         if (!(this.item == null)) {
             System.out.println("В коробке уже есть предмет. Используйте другую коробку!!!");
-        } else if (this.isOpen == 0) {
+        } else if (this.isOpen) {
             System.out.println("Коробка закрыта. Прежде чем положить предмет в коробку ее нужно открыть!!!");
         } else {
             this.item = item;
@@ -48,7 +48,7 @@ public class Box {
     public void info() {
         System.out.println("Размер коробки: " + size);
         System.out.println("Цвет коробки: " + color);
-        if (isOpen == 0) {
+        if (!isOpen) {
             System.out.println("Состояние: закрыта");
         } else {
             System.out.println("Состояние: открыта");
