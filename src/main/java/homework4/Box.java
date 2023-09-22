@@ -1,7 +1,7 @@
 package homework4;
 
 public class Box {
-    private final int size;
+    private int size;
     private String color;
     private String item;
     private boolean isOpen;
