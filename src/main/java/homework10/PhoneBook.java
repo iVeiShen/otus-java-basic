@@ -1,35 +1,45 @@
 package homework10;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class PhoneBook {
-    private static HashMap<Human, Integer> data;
+    private static HashMap<String, List<Integer>> data;
 
     public PhoneBook() {
-        this.data = new HashMap<>();
+        data = new HashMap<>();
     }
 
-    public HashMap<Human, Integer> getData() {
+    public HashMap<String, List<Integer>> getData() {
         return data;
     }
 
     public void add(String name, Integer phoneNumber) {
-        data.put(new Human(name), phoneNumber);
-        System.out.println("Sucess add {" + name + " : " + phoneNumber + "} to PhoneBook");
+        if (!(data.get(name) == null)) {
+            List<Integer> phoneList = new ArrayList<>(data.get(name));
+            phoneList.add(phoneNumber);
+            data.put(name, phoneList);
+        } else {
+            data.put(name, List.of(phoneNumber));
+        }
+        System.out.println("Success add {" + name + " : " + phoneNumber + "} to PhoneBook");
     }
 
     public void find(String name) {
-        System.out.println("Finding name {" + name + "} in PhoneBook:");
-        for (Map.Entry<Human, Integer> entry : data.entrySet()) {
-            if (entry.getKey().getName() == name) {
-                System.out.println("Name: " + entry.getKey().getName() + " Phone: " + entry.getValue());
-            }
+        System.out.println("Finding phone numbers for {" + name + "} in PhoneBook:");
+        for (Integer phoneNumber : data.get(name)) {
+            System.out.println("Name: {" + name + "} | Phone number: {" + phoneNumber + "}");
         }
     }
 
     public boolean containsPhoneNumber(Integer phoneNumber) {
-        System.out.println("Containing phone number {" + phoneNumber+"}");
-        return data.containsValue(phoneNumber);
+        System.out.println("Containing phone number {" + phoneNumber + "}:");
+        for (Map.Entry<String, List<Integer>> row : data.entrySet())
+            if (row.getValue().contains(phoneNumber)) {
+                return true;
+            }
+        return false;
     }
 }
