@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 public class PhoneBook {
-    private HashMap<String, List<Integer>> data;
+    private HashMap<String, ArrayList<Integer>> data;
 
     public PhoneBook() {
         data = new HashMap<>();
     }
 
-    public HashMap<String, List<Integer>> getData() {
+    public HashMap<String, ArrayList<Integer>> getData() {
         return data;
     }
 
@@ -21,12 +21,9 @@ public class PhoneBook {
             if (data.get(name).contains(phoneNumber)) {
                 return;
             }
-            //data.get(name).add(phoneNumber);
-            List<Integer> phoneList = new ArrayList<>(data.get(name));
-            phoneList.add(phoneNumber);
-            data.put(name, phoneList);
+            data.get(name).add(phoneNumber);
         } else {
-            data.put(name, List.of(phoneNumber));
+            data.put(name, new ArrayList<>(List.of(phoneNumber)));
         }
         System.out.println("Success add {" + name + " : " + phoneNumber + "} to PhoneBook");
     }
@@ -40,7 +37,7 @@ public class PhoneBook {
 
     public boolean containsPhoneNumber(Integer phoneNumber) {
         System.out.println("Containing phone number {" + phoneNumber + "}:");
-        for (Map.Entry<String, List<Integer>> row : data.entrySet())
+        for (Map.Entry<String, ArrayList<Integer>> row : data.entrySet())
             if (row.getValue().contains(phoneNumber)) {
                 return true;
             }

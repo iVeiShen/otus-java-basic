@@ -5,6 +5,7 @@ public class HomeWork10App {
         PhoneBook phoneBook = new PhoneBook();
         System.out.println("Created PhoneBook: " + phoneBook);
         phoneBook.add("John", 3456029);
+        phoneBook.add("John", 3456029);
         phoneBook.add("Alice", 3442946);
         phoneBook.add("Mark", 2671281);
         phoneBook.add("John", 2282288);
