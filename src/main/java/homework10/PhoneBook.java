@@ -21,10 +21,10 @@ public class PhoneBook {
             if (data.get(name).contains(phoneNumber)) {
                 return;
             }
-            data.get(name).add(phoneNumber);
-            //List<Integer> phoneList = new ArrayList<>(data.get(name));
-            //phoneList.add(phoneNumber);
-            //data.put(name, phoneList);
+            //data.get(name).add(phoneNumber);
+            List<Integer> phoneList = new ArrayList<>(data.get(name));
+            phoneList.add(phoneNumber);
+            data.put(name, phoneList);
         } else {
             data.put(name, List.of(phoneNumber));
         }
