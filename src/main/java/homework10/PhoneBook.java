@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PhoneBook {
-    private static HashMap<String, List<Integer>> data;
+    private HashMap<String, List<Integer>> data;
 
     public PhoneBook() {
         data = new HashMap<>();
@@ -18,9 +18,13 @@ public class PhoneBook {
 
     public void add(String name, Integer phoneNumber) {
         if (!(data.get(name) == null)) {
-            List<Integer> phoneList = new ArrayList<>(data.get(name));
-            phoneList.add(phoneNumber);
-            data.put(name, phoneList);
+            if (data.get(name).contains(phoneNumber)) {
+                return;
+            }
+            data.get(name).add(phoneNumber);
+            //List<Integer> phoneList = new ArrayList<>(data.get(name));
+            //phoneList.add(phoneNumber);
+            //data.put(name, phoneList);
         } else {
             data.put(name, List.of(phoneNumber));
         }
