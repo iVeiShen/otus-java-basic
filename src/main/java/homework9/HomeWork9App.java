@@ -83,16 +83,18 @@ public class HomeWork9App {
         return newEmployeeList;
     }
 
-    public static void checkMinAverageAge(List<Employee> employeeList, int minAverageAge) {
-        int averageAge = 0;
+    public static boolean checkMinAverageAge(List<Employee> employeeList, int minAverageAge) {
+        int averageAgeTemp = 0;
         for (Employee emp : employeeList) {
-            averageAge += emp.getAge();
+            averageAgeTemp += emp.getAge();
         }
-        averageAge = averageAge / employeeList.size();
+        int averageAge = averageAgeTemp / employeeList.size();
         if (averageAge > minAverageAge) {
             System.out.println("Средний возвраст (" + averageAge + ") превышает минимальный средний возраст (" + minAverageAge + ")");
+            return false;
         } else {
             System.out.println("Средний возвраст (" + averageAge + ") не превышает минимальный средний возраст (" + minAverageAge + ")");
+            return true;
         }
     }
 
