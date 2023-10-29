@@ -19,14 +19,18 @@ public class HomeWork8App {
     public static int checkArray(String[][] array) throws AppArraySizeException, AppArrayDataException {
         int result = 0;
         System.out.println("Входящий массив: " + Arrays.deepToString(array));
-        if (array.length != 4 || array[0].length != 4) {
+        if (array.length != 4) {
             throw new AppArraySizeException();
         }
+        for (int i = 0; i < array.length; i++)
+            if (array[i].length != 4) {
+                throw new AppArraySizeException();
+            }
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 try {
                     result += Integer.parseInt(array[i][j]);
-                } catch (Exception e) {
+                } catch (NumberFormatException e) {
                     throw new AppArrayDataException(i, j);
                 }
             }
