@@ -8,9 +8,10 @@ import java.util.Scanner;
 
 public class HomeWork12App {
     public static void main(String[] args) {
-        File directory = new File("C:\\Users\\veish\\IdeaProjects\\otus.java.basic");
+        //C:\Users\veish\IdeaProjects
+        File directory = new File("./files");
         File selectedFile = null;
-        System.out.println("Директория: " + directory);
+        System.out.println("Директория: " + directory.getAbsolutePath());
         List<File> fileList = getFilesFromDirectory(directory);
         showFiles(fileList);
         while (selectedFile == null) {
@@ -55,7 +56,7 @@ public class HomeWork12App {
     }
 
     public static void showFileContent(File file) {
-        try (InputStreamReader in = new InputStreamReader(new FileInputStream(file.getName()))) {
+        try (InputStreamReader in = new InputStreamReader(new FileInputStream(file))) {
             System.out.println("Содержимое файла:");
             int n = in.read();
             while (n != -1) {
@@ -69,10 +70,10 @@ public class HomeWork12App {
     }
 
     public static void changeFileContent(File file) {
-        System.out.println("Введите текст, для добавления в файл:");
+        System.out.println("Введите текст, для записи в файл:");
         Scanner scanner = new Scanner(System.in);
         String content = scanner.next();
-        try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file.getName()))) {
+        try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file))) {
             byte[] buffer = content.getBytes(StandardCharsets.UTF_8);
             for (int i = 0; i < buffer.length; i++) {
                 out.write(buffer[i]);
