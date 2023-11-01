@@ -7,7 +7,7 @@ import java.net.Socket;
 import java.util.List;
 import java.util.Scanner;
 
-public class Client implements AutoCloseable {
+public class Client {
     private Socket socket;
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
@@ -72,7 +72,7 @@ public class Client implements AutoCloseable {
 
     }
 
-    public void sendDataToServer() {
+    private void sendDataToServer() {
         System.out.println("Sending data to server:");
         try {
             System.out.println(data);
@@ -84,7 +84,7 @@ public class Client implements AutoCloseable {
         }
     }
 
-    public void getDataFromServer() {
+    private void getDataFromServer() {
         System.out.println("Start getting data from server:");
         try {
             System.out.println("result: " + dataInputStream.readUTF());
@@ -94,15 +94,5 @@ public class Client implements AutoCloseable {
         }
         System.out.println("--> End getting data from server:");
 
-    }
-
-    @Override
-    public void close() {
-        try {
-            dataOutputStream.close();
-            dataInputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
