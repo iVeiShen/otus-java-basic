@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 public class HomeWork12App {
     public static void main(String[] args) {
-        //C:\Users\veish\IdeaProjects
         File directory = new File("./files");
         File selectedFile = null;
         System.out.println("Директория: " + directory.getAbsolutePath());
@@ -56,7 +55,7 @@ public class HomeWork12App {
     }
 
     public static void showFileContent(File file) {
-        try (InputStreamReader in = new InputStreamReader(new FileInputStream(file))) {
+        try (BufferedInputStream in = new BufferedInputStream(new FileInputStream(file))) {
             System.out.println("Содержимое файла:");
             int n = in.read();
             while (n != -1) {
